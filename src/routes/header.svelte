@@ -1,16 +1,17 @@
 <script lang="ts">
+	import { base } from "$app/paths";
     import * as config from "$lib/config";
 	import Toggle from "./toggle.svelte";
 </script>
 
 <nav>
-    <a href="/" class="title">
+    <a href="{base}/" class="title">
         <b>{config.title}</b>
     </a>
 
     <ul class="links">
         <li>
-            <a href="/about">About</a>
+            <a href="{base}/about">About</a>
         </li>
         <Toggle />
     </ul>

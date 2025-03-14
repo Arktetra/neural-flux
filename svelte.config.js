@@ -37,7 +37,10 @@ const config = {
 	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		paths: {
+			base: process.env.NODE_ENV === "production" ? "/neural-flux" : "",
+		}
 	}
 };
 
