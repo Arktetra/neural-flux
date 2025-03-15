@@ -10,9 +10,6 @@
     </a>
 
     <ul class="links">
-        <li>
-            <a href="{base}/about">About</a>
-        </li>
         <Toggle />
     </ul>
 </nav>
