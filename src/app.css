@@ -27,6 +27,9 @@ html {
 	--surface-4-light: var(--gray-3);
 	--background-light: none;
 	--border-light: var(--gray-4);
+
+	/* size */
+	--size-content-4: 75ch;
 }
 
 :root {
@@ -134,6 +137,7 @@ li {
 }
 
 .prose :is(h2, h3, h4, h5, h6) {
+	font-weight: normal;
     margin-top: var(--size-8);
     margin-bottom: var(--size-3);
 }

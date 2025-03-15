@@ -29,12 +29,13 @@
 
 <style>
     article {
-        max-inline-size: var(--size-content-3);
+        max-inline-size: var(--size-content-4);
         margin-inline: auto;
     }
 
     h1 {
         text-transform: capitalize;
+        font-weight: normal;
     }
 
     h1 + p {

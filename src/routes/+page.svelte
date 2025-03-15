@@ -25,10 +25,12 @@
     .posts {
         display: grid;
         gap: var(--size-7);
+        justify-items: center;
     }
 
     .post {
-        max-inline-size: var(--size-content-3);
+        max-inline-size: var(--size-content-4);
+        width: 100%;
 
         > a {
             color: inherit;
