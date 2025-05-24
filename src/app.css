@@ -25,7 +25,7 @@ html {
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);
 	--surface-4-light: var(--gray-3);
-	--background-light: none;
+	--background-light: #fffff8;
 	--border-light: var(--gray-4);
 
 	/* size */
@@ -93,6 +93,8 @@ html {
 html,
 body {
 	height: 100%;
+	/* background: #fffff8; */
+	background: var(--background);
 }
 
 html {
@@ -138,8 +140,12 @@ li {
 
 .prose :is(h2, h3, h4, h5, h6) {
 	font-weight: normal;
-    margin-top: var(--size-8);
+    margin-top: var(--size-7);
     margin-bottom: var(--size-3);
+}
+
+.prose :is(h3, h4, h5, h6) {
+	font-style: italic;
 }
 
 .prose p:not(:is(h2, h3, h4, h5, h6) + p) {
@@ -153,6 +159,11 @@ li {
 .prose :is(ul, ol) li {
     margin-block: var(--size-2);
     padding-inline-start: var(--size-2);
+}
+
+
+.prose :is(p) {
+	font-size: 21px;
 }
 
 .prose pre {
