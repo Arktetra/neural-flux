@@ -26,10 +26,13 @@
 		display: grid;
 		gap: var(--size-7);
 		justify-items: center;
+		width: 100%;
+		padding-inline: var(--size-7);
 	}
 
 	.post {
-		max-inline-size: var(--size-content-4);
+		/* max-inline-size: var(--size-content-7); */
+		max-inline-size: 1096px;
 		width: 100%;
 
 		> a {
