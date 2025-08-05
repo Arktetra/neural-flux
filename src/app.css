@@ -30,6 +30,7 @@ html {
 
 	/* size */
 	--size-content-4: 75ch;
+	--size-content-7: 120ch;
 }
 
 :root {
@@ -139,13 +140,20 @@ li {
 }
 
 .prose :is(h2, h3, h4, h5, h6) {
-	font-weight: normal;
+	font-weight: 550;
     margin-top: var(--size-7);
     margin-bottom: var(--size-3);
+	font-style: italic;
 }
 
-.prose :is(h3, h4, h5, h6) {
-	font-style: italic;
+.prose :is(h2) {
+	font-size: var(--font-size-5);
+	margin: 0px 0px 20px;
+}
+
+.prose :is(h3) {
+	font-size: var(--font-size-4);
+	margin: 0px;
 }
 
 .prose p:not(:is(h2, h3, h4, h5, h6) + p) {
@@ -161,9 +169,8 @@ li {
     padding-inline-start: var(--size-2);
 }
 
-
 .prose :is(p) {
-	font-size: 21px;
+	font-size: 22px;
 }
 
 .prose pre {
@@ -172,4 +179,24 @@ li {
     border-radius: 8px;
     tab-size: 4;
     background: red;
+	font-size: 15px;
+}
+
+:where(h1) {
+	font-size: var(--font-size-8);
+	padding: 10px 0px 10px 0px;
+	margin: 0px;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+	text-wrap: balance;
+	/* line-height: */
+}
+
+svg {
+ 	font-size: 1em;
+}
+
+mjx-container[display="true"] {
+	font-size: 1.3em;
 }

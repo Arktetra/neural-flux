@@ -4,6 +4,9 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import { createHighlighter } from 'shiki';
 
+import remarkMath from 'remark-math';
+import rehypeMathjax from 'rehype-mathjax';
+
 /** @type {import('mdsvex').MdsvexOptions} */
 const mdsvexOptions = {
 	extensions: ['.md'],
@@ -17,7 +20,7 @@ const mdsvexOptions = {
 			});
 
 			const html = escapeSvelte(
-				highlighter.codeToHtml(code, 
+				highlighter.codeToHtml(code,
 					{
 						lang: lang,
 						theme: 'catppuccin-mocha'
@@ -25,10 +28,12 @@ const mdsvexOptions = {
 				)
 			);
 			console.log(html);
-			
+
 			return `{@html \`${html}\` }`;
 		}
-	}
+	},
+	remarkPlugins: [remarkMath],
+	rehypePlugins: [rehypeMathjax]
 }
 
 /** @type {import('@sveltejs/kit').Config} */
