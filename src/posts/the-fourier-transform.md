@@ -1,36 +1,52 @@
 ---
-title: The Discrete Time Fourier Transform
-description: Implementation of discrete time Fourier transform in Python.
-date: '2025-02-23'
+title: The Discrete Fourier Transform
+description: Implementation of 2D discrete Fourier transform in Python.
+date: '2025-08-06'
 categories:
     - sveltekit
     - svelte
 published: true
 ---
 
-This discrete time Fourier transform (DTFT) is given by,
-<!-- \[ -->
-<!-- \hat{f}_k = \sum_{n = 0}^{N - 1} f_j e^{-k2 \pi n k / n} -->
-<!-- \] -->
+## The Discrete Time Fourier Transform
+Consider a discrete time signal $x[n]$. Its discrete time Fourier transform (DTFT) is given by,
 $$
-\begin{equation}
-X[k] = \sum_{n = 0}^{N - 1} x[n] e^{-j 2\pi n k / N}
-\label{eq:forward}
-\tag{1}
-\end{equation}
+X(\omega) = \sum_{n = -\infty}^{\infty} x[n] e^{-j \omega n}
+$$
+And its inverse is given by,
+$$
+x[n] = \int_{\infty}^{\infty} X(\omega) e^{j \omega n} d \omega
+$$
+The DTFT calculates the frequency spectrum of a discrete-time signal. Its result is continuous in frequency as well as periodic.
+
+## The Discrete Fourier Transform
+The DTFT can not directly be computed by a computer as it requires the calculation of an infinite summation. Discrete Fourier transform (DFT) resolves this problem by assuming a finite length signal.
+
+Let $x[n]$ be non-zero only for $0 \le n \le N - 1$. Then, the DTFT can be computed as,
+$$
+X(\omega) = \sum_{n = 0}^{N - 1} x[n] e^{-j \omega n}
 $$
 
-and the inverse discrete time Fourier transform (IDTFT) is given by,
+Since, the time domain consists of only $N$ samples, the frequency domain will also have only $N$ independent samples,
 $$
-\begin{equation}
-x[k] = \frac{1}{N} \sum_{n = 0}^{N - 1} X[n] e^{i2\pi n k / N}
-\tag{2}
-\end{equation}
+\begin{align}
+X[k] &= X(\omega_k) \\
+&= \sum_{n = 0}^{N - 1} x[n] e^{-j \omega_k n} \\
+&= \sum_{n = 0}^{N - 1} x[n] e^{-j 2\pi n k / N}
+\label{eq:DFT} \tag{4}
+\end{align}
+$$
+where, $\omega_k = \dfrac{2 \pi k}{n}$, $0 \le k \le N - 1$.
+
+Equation $\eqref{eq:DFT}$ is the DFT, and its inverse is given by,
+$$
+x[n] = \frac{1}{N}\sum_{k = 0}^{N - 1} X[k] e ^{j 2 \pi n k / N}
 $$
 
-For $N$ points, the DTFT represents the data using sine and cosine functions with integer multiples of a fundamental frequency in the twiddle factor, $w_N = e^{-2\pi j / N}$.
+### The DFT matrix
+For $N$ points, the DFT represents the data using sine and cosine functions with integer multiples of a fundamental frequency in the twiddle factor, $w_N = e^{-2\pi j / N}$.
 
-From $\eqref{eq:forward}$, it can be observed that the DTFT is a linear operator which maps data points $\textbf{x}$ in spatial domain to $\textbf{X}$ in frequency domain. 
+From $\eqref{eq:DFT}$, it can be observed that the DFT is a linear operator which maps data points $\textbf{x}$ in spatial domain to $\textbf{X}$ in frequency domain. 
 
 $$
 \begin{align}
@@ -60,25 +76,30 @@ x[N - 1]
 \end{bmatrix} \\
 \end{align}
 $$
-where, the DTFT $\textbf{W}$ is a unitary Vandermonde matrix.
+where, the DFT matrix $\textbf{W}$ is a unitary Vandermonde matrix.
 
 The output vector $\textbf{X}$ contains the Fourier coefficients for the input vector $\textbf{x}$.
 
-The 2D Discrete time Fourier transform can then be given as,
+### The 2-Dimensional Discrete Fourier Transform
+The 2D DFT can then be given as,
 $$
 \begin{equation}
-X[k, l] = \frac{1}{MN} \sum_{m = 0}^{M - 1} \bigg[\sum_{n = 0}^{N - 1} x[n] e^{-j 2\pi n k / N} \bigg] e^{-j 2\pi m l / N}
-
-\label{eq:2D-forward}
+X[k, l] = \sum_{m = 0}^{M - 1} \bigg[\sum_{n = 0}^{N - 1} x[m, n] e^{-j 2\pi n k / N} \bigg] e^{-j 2\pi m l / N}
+\label{eq:2D-DFT}
 \tag{4}
 \end{equation}
 $$
+And its inverse as,
+$$
+\begin{equation}
+X[m, n] = \frac{1}{MN}\sum_{k = 0}^{M - 1} \bigg[\sum_{l = 0}^{N - 1} X[k, l] e^{j 2\pi n k / N} \bigg] e^{j 2\pi m l / N}
+\end{equation}
+$$
 
-## Implementation
+The 2D DFT can be viewed as a sequence of two 1D DFT applied to the first variable and then the second. In case of image, this means applying a 1D DFT along the column and then applying another 1D DFT along the row of the result obtained from the first transform.
 
-### The DTFT Matrix
-
-From $\eqref{eq:DTFT-matrix}$, it can be observed that the DTFT can be computed if we can compute $\textbf{W}$. The code to compute it is given below:
+## The Implementation
+Let us first import the libraries that we will be using.
 
 ```python
 import numpy as np
@@ -86,7 +107,13 @@ import plotly.express as px
 import requests
 
 from PIL import Image
+```
 
+### The DTFT Matrix
+
+From $\eqref{eq:DTFT-matrix}$, it can be observed that the DFT can be computed if we can compute $\textbf{W}$. The code to compute it is given below:
+
+```python
 def DFT_matrix(N: int = 256):
     w = np.exp(-2 * np.pi * 1.j / N)
 
@@ -105,7 +132,7 @@ px.imshow(np.real(F), width=600, height=600)
 
 ![W_512](fourier/W_512.png)
 
-Now, the 1D DTFT can be implemented as,
+Now, the 1D DFT can be implemented as,
 
 ```python
 def dft(x):
@@ -113,7 +140,7 @@ def dft(x):
     return W @ x
 ```
 
-And the 2D DTFT can be implemented as,
+And the 2D DFT can be implemented as,
 
 ```python
 def dft2(x):
