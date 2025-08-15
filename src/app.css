@@ -93,10 +93,13 @@ html {
 
 html,
 body {
-	height: 100%;
-	/* background: #fffff8; */
+	margin: 0;
+	padding: 0;
+	height: 100vh;
 	background: var(--background);
 	font-family: Crimson, Georgia, serif;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
 html {

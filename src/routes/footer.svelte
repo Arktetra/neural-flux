@@ -17,4 +17,3 @@
 		color: var(--text-2);
 	}
 </style>
-

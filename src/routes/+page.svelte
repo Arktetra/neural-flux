@@ -26,7 +26,6 @@
 		display: grid;
 		gap: var(--size-7);
 		justify-items: center;
-		width: 100%;
 		padding-inline: var(--size-7);
 	}
 
