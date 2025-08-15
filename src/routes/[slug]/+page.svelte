@@ -32,6 +32,7 @@
 		/* max-inline-size: var(--size-content-4); */
 		max-inline-size: 1096px;
 		margin-inline: auto;
+		padding-inline: var(--size-7);
 	}
 
 	hgroup {
