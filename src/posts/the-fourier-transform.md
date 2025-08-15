@@ -3,8 +3,7 @@ title: The Discrete Fourier Transform
 description: Implementation of 2D discrete Fourier transform in Python.
 date: '2025-08-06'
 categories:
-    - sveltekit
-    - svelte
+    - signal-processing
 published: true
 ---
 

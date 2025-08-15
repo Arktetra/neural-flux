@@ -96,6 +96,7 @@ body {
 	height: 100%;
 	/* background: #fffff8; */
 	background: var(--background);
+	font-family: Crimson, Georgia, serif;
 }
 
 html {
