@@ -57,4 +57,8 @@
 	.description {
 		margin-top: var(--size-3);
 	}
+
+	li {
+		list-style-type: none;
+	}
 </style>
