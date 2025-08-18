@@ -115,7 +115,6 @@ img {
 
 ul,
 ol {
-	list-style: none;
 	padding: 0;
 }
 
@@ -141,6 +140,11 @@ li {
 .surface-4 {
 	background-color: var(--surface-4);
 	color: var(--text-1);
+}
+
+.prose :is(li, ol) {
+	font-size: 22px;
+	margin-left: 1rem;
 }
 
 .prose :is(h2, h3, h4, h5, h6) {
@@ -186,6 +190,11 @@ li {
 	font-size: 15px;
 }
 
+.prose a {
+	color: var(--text-1);
+	font-weight: bold;
+}
+
 :where(h1) {
 	font-size: var(--font-size-8);
 	padding: 10px 0px 10px 0px;
@@ -202,5 +211,5 @@ svg {
 }
 
 mjx-container[display="true"] {
-	font-size: 1.3em;
+	font-size: 1.3rem;
 }
