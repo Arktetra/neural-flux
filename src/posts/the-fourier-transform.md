@@ -91,7 +91,7 @@ $$
 And its inverse as,
 $$
 \begin{equation}
-X[m, n] = \frac{1}{MN}\sum_{k = 0}^{M - 1} \bigg[\sum_{l = 0}^{N - 1} X[k, l] e^{j 2\pi n k / N} \bigg] e^{j 2\pi m l / N}
+x[m, n] = \frac{1}{MN}\sum_{k = 0}^{M - 1} \bigg[\sum_{l = 0}^{N - 1} X[k, l] e^{j 2\pi n k / N} \bigg] e^{j 2\pi m l / N}
 \end{equation}
 $$
 
@@ -113,7 +113,7 @@ from PIL import Image
 From $\eqref{eq:DTFT-matrix}$, it can be observed that the DFT can be computed if we can compute $\textbf{W}$. The code to compute it is given below:
 
 ```python
-def DFT_matrix(N: int = 256):
+def dft_matrix(N: int = 256):
     w = np.exp(-2 * np.pi * 1.j / N)
 
     j, k = np.meshgrid(np.arange(N), np.arange(N))
@@ -126,7 +126,7 @@ If we visualize the real part of $\textbf{W}$ for $N = 512$, then we obtain:
 ```python
 W_512 = DFT_matrix(N=512)
 
-px.imshow(np.real(F), width=600, height=600)
+px.imshow(np.real(W_512), width=600, height=600)
 ```
 
 ![W_512](fourier/W_512.png)
@@ -135,7 +135,7 @@ Now, the 1D DFT can be implemented as,
 
 ```python
 def dft(x):
-    W = DFT_matrix(x.shape[-1])
+    W = dft_matrix(x.shape[-1])
     return W @ x
 ```
 
@@ -146,5 +146,5 @@ def dft2(x):
     W = DFT_matrix(x.shape[-1])
     X = W @ x
     W = DFT_matrix(x.shape[-2])
-    return W @ X.T
+    return (W @ X.T).T
 ```
