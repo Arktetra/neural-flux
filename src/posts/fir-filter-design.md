@@ -97,7 +97,30 @@ w[n] =
 \end{cases}
 $$
 
-So, what kind of effect does this window have on the desired frequency response $H_d(\omega)$?  We can find this out by analyzing the convolution of $H_d(\omega)$ and $W(\omega)$, as multiplcation in time domain is equivalent to convolutiopn in frequency domain.
+So, what kind of effect does this window have on the desired frequency response $H_d(\omega)$?  We can find this out by analyzing the convolution of $H_d(\omega)$ and $W(\omega)$, as multiplcation in time domain is equivalent to convolution in frequency domain.
 $$
 H(\omega) = \frac{1}{2\pi} \int_{-\pi}^{\pi} H_d(\nu) W(\omega - \nu) d\nu
 $$
+Here,
+$$
+\begin{align}
+W(\omega) &= \sum_{n = 0}^{M - 1} e^{-j \omega n} \\
+&= \frac{1 - e^{-j \omega M}}{1 - e^{-j \omega}} \\
+&= e^{-j \omega [M - 1] / 2} \left[\frac{e^{j \omega M / 2} - e^{-j \omega M /2}}{e^{j \omega / 2} - e^{-j \omega /2 }}\right] \\
+&= \frac{\sin{\omega M / 2}}{\sin{\omega / 2}} e^{-j \omega [M - 1] / 2} \\
+\end{align}
+$$
+This equation equals zero whenever
+$$
+\begin{align}
+\frac{\omega M}{2} = k \pi \\
+\omega = \frac{2 \pi k}{M}
+\end{align}
+$$
+where, $k$ is any non-zero integer.
+
+*Plot Graph of W*
+
+From the above plot, it can be observed that the width of the main-lobe is $4 \pi / M$. As $M$ increases, the main-lobe of the rectangular window becomes narrower.
+
+The convolution of $H_d(\omega)$ with $W(\omega)$ has a smoothing effect on $H_d(\omega)$. The smoothing effect reduces as $M$ increases.
