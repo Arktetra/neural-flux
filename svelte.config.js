@@ -16,7 +16,7 @@ const mdsvexOptions = {
 
 			const highlighter = await createHighlighter({
 				themes: ['catppuccin-mocha'],
-				langs: ['javascript', 'typescript', 'rust', 'c', 'c++', 'python'],
+				langs: ['javascript', 'typescript', 'rust', 'c', 'c++', 'python', 'bash'],
 			});
 
 			const html = escapeSvelte(

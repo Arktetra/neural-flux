@@ -239,6 +239,12 @@ mjx-container[display="true"] {
 /**/
 /* } */
 
+.prose img {
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+
 mjx-container[jax="SVG"].s-_YgaZnObCJu4 > svg:where(.s-_YgaZnObCJu4) a:where(.s-_YgaZnObCJu4) {
     fill: var(--text-1);
     stroke: var(--text-1);
