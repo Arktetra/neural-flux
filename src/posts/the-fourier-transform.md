@@ -193,7 +193,7 @@ plt.imshow(np.log(np.abs(img_dft2)**2))
 
 ![Eye Nebuala DFT2](fourier/eye_nebula_dft2.png)
 
-Based on our current implementation, the frequencies [0, 0] is at the top left corner. However, centering the Fourier transform can make it easier to interpret the frequency content of the image. This can be done by shifting each frequency component such that they increase outwards from the center,
+Based on our current implementation, the frequencies [0, 0] is at the top left corner. Centering the Fourier transform can make it easier to interpret the frequency content of the image. However, to center the transform, we require negative frequency components. So, where are these negative frequency components? The second half of the frequency components are the negative frequency components.
 
 ```python
 def dftshift(x, axes=None):
