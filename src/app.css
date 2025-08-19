@@ -6,21 +6,32 @@ html {
 	--font-system-ui: Georgia, serif;
 	--font-monospace-code: 'JetBrains Mono', monospace;
 
+	--white-1: #aaaaaa;
+	--white-2: #d7d7d7;
+	--white-3: #ffffff;
+	--black-1: #555555;
+	--black-2: #272727;
+	--black-3: #000000;
+
 	/* dark */
 	--brand-dark: var(--orange-3);
-	--text-1-dark: var(--gray-3);
-	--text-2-dark: var(--gray-5);
+	/* --text-1-dark: var(--gray-3); */
+	/* --text-2-dark: var(--gray-5); */
+	--text-1-dark: var(--white-2);
+	--text-2-dark: var(--white-1);
 	--surface-1-dark: var(--gray-12);
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
 	--surface-4-dark: var(--gray-9);
 	--background-dark: var(--gradient-8);
-	--border-dark: var(--gray-9);
+	--border-dark: var(--gray-8);
 
 	/* light */
 	--brand-light: var(--orange-10);
-	--text-1-light: var(--gray-10);
-	--text-2-light: var(--gray-7);
+	/* --text-1-light: var(--gray-10); */
+	/* --text-2-light: var(--gray-7); */
+	--text-1-light: var(--black-2);
+	--text-2-light: var(--black-1);
 	--surface-1-light: var(--gray-0);
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);
@@ -148,15 +159,22 @@ li {
 }
 
 .prose :is(h2, h3, h4, h5, h6) {
-	font-weight: 550;
+	/* font-weight: 550; */
+	font-weight: bold;
     margin-top: var(--size-7);
     margin-bottom: var(--size-3);
+}
+
+.prose :is(h3, h4, h5, h6) {
 	font-style: italic;
 }
 
 .prose :is(h2) {
 	font-size: var(--font-size-5);
 	/* margin: 0px 0px 20px; */
+	margin-top: var(--size-8);
+	padding-bottom: var(--size-3);
+	border-bottom: 1px solid var(--border);
 }
 
 .prose :is(h3) {
@@ -165,7 +183,7 @@ li {
 }
 
 .prose p:not(:is(h2, h3, h4, h5, h6) + p) {
-    margin-top: var(--size-7);
+    margin-top: var(--size-5);
 }
 
 .prose :is(ul, ol) {
@@ -179,6 +197,7 @@ li {
 
 .prose :is(p) {
 	font-size: 22px;
+	line-height: 1.4;
 }
 
 .prose pre {
@@ -212,4 +231,15 @@ svg {
 
 mjx-container[display="true"] {
 	font-size: 1.3rem;
+}
+
+/* mjx-container[jax="SVG"].s-ebObN1ttWE3o > svg:where(.s-ebObN1ttWE3o) a:where(.s-ebObN1ttWE3o) { */
+/*     fill: var(--text-1); */
+/*     stroke: var(--text-1); */
+/**/
+/* } */
+
+mjx-container[jax="SVG"].s-_YgaZnObCJu4 > svg:where(.s-_YgaZnObCJu4) a:where(.s-_YgaZnObCJu4) {
+    fill: var(--text-1);
+    stroke: var(--text-1);
 }
