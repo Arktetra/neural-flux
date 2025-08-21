@@ -7,10 +7,10 @@ html {
 	--font-monospace-code: 'JetBrains Mono', monospace;
 
 	--white-1: #aaaaaa;
-	--white-2: #d7d7d7;
+	--white-2: #cccccc;
 	--white-3: #ffffff;
 	--black-1: #555555;
-	--black-2: #272727;
+	--black-2: #333333;
 	--black-3: #000000;
 
 	/* dark */
@@ -18,7 +18,7 @@ html {
 	/* --text-1-dark: var(--gray-3); */
 	/* --text-2-dark: var(--gray-5); */
 	--text-1-dark: var(--white-2);
-	--text-2-dark: var(--white-1);
+	--text-2-dark: var(--white-2);
 	--surface-1-dark: var(--gray-12);
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
@@ -110,7 +110,7 @@ body {
 	background: var(--background);
 	font-family: Crimson, Georgia, serif;
 	max-width: 100%;
-	overflow-x: hidden;
+	/* overflow-x: hidden; */
 }
 
 html {
@@ -214,6 +214,14 @@ li {
 	font-weight: bold;
 }
 
+.prose blockquote {
+	border-left: 2px solid var(--border);
+	margin-inline: 0px;
+	padding: 1px 1rem 1px 2rem;
+	/* padding-left: 2rem; */
+	background-color: var(--surface-2);
+}
+
 :where(h1) {
 	font-size: var(--font-size-8);
 	padding: 10px 0px 10px 0px;
@@ -246,6 +254,6 @@ mjx-container[display="true"] {
 }
 
 mjx-container[jax=SVG] a g {
-    fill: black;
-    stroke: black;
+    fill: var(--text-2);
+    stroke: var(--text-1);
 }
