@@ -232,7 +232,7 @@ def dft_basis_2d(N: int, M: int, u: int, v: int):
     return np.exp(-1.j * 2 * np.pi * (n * u / N + m * v / M), dtype=np.complex128)
 ```
 
-It can be observed that an image of width $M=8$ and height $N=8$ will have $8 \times 8 = 64$ basis images as shown below
+It can be observed that an image of width $M=8$ and height $N=8$ will have $8 \times 8 = 64$ basis images as shown below (only the real part is shown):
 
 ```python
 M, N = 8, 8
@@ -243,7 +243,7 @@ for i in range(M):
         basis_img = np.real(dft_basis_2d(M, N, i, j)).astype(np.float32)
         axes[i][j].set_yticks([])
         axes[i][j].set_xticks([])
-        axes[i][j].imshow(basis_img, cmap="gray", vmin=0., vmax=1.)
+        axes[i][j].imshow(basis_img, cmap="gray", vmin=-1., vmax=1.)
 ```
 
 ![8x8 Bases](fourier/bases.png)
